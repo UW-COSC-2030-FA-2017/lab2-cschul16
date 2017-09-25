@@ -7,7 +7,8 @@
 
 // This version uses a pointer to the first Node of a
 //   singly linked list of Nodes.
-
+// Edited by Chris Schultz
+// 25 September 2017
 
 #ifndef _LINKED_LIST_H_
 #define _LINKED_LIST_H_
@@ -15,7 +16,7 @@
 #include <iostream>
 using std::ostream;
 
-#include "Node.cpp"
+#include "Node.h"
 
 #define ulong unsigned long
 
@@ -54,6 +55,12 @@ public:
 	//         outfile.
 	void print(ostream & outfile) const;
 
+	// function to get the size of the list;
+	int size();
+
+	// function that will compute the sum of the items in the list
+	double sum();
+
 
 	//*** Mutators ***
 
@@ -65,6 +72,9 @@ public:
 	// post: the first double in this List has been removed
 	//         from this List and has been returned.
 	double removeFirst();
+
+	// inserts a double as the last value in the list
+	void insertAsLast(double x);
 
 private:
 	//*** Inaccessible standard functions ***

@@ -3,6 +3,9 @@
 // tom bailey   0745  5 oct 2010
 // Definition of methods for the List class.
 
+// Edited by Chris Schultz
+// 25 September 2017
+
 #include "LinkedList.h"
 
 #include <utility>
@@ -49,12 +52,46 @@ bool List::empty() const
 	return first_ == NULL;
 }
 
+// function definition to get the size of the list
+int List::size(){
+    int count = 0;
+    Node * ptr = first_;
+    while (ptr != 0){
+        count ++;
+        ptr = ptr -> next_;
+    }
+    return count;
+}
+
+// function definition to get the sum of the list items
+double List::sum(){
+    double sum = 0;
+    Node * ptr = first_;
+    while (ptr != 0){
+        sum = sum + (ptr -> entry_);
+        ptr = ptr -> next_;
+    }
+    return sum;
+}
 
 void List::insertAsFirst(double x)
 {
 	first_ = new Node(x, first_);
 }
 
+// function definition to insert a double as the last value
+void List::insertAsLast(double x){
+    if (empty()){
+        insertAsFirst(x);
+    }
+    else{
+        Node * ptr = first_;
+        while (ptr -> next_ != 0){
+            ptr = ptr -> next_;
+        }
+        ptr -> next_ = new Node (x, 0);
+    }
+}
 
 double List::removeFirst()
 {
